@@ -75,7 +75,7 @@ function galleryFoo(arr) {
     <img
       class="gallery-image"
       src="${preview}"
-      data-source=${original}"
+      data-source="${original}"
       alt="${description}"
     />
   </a>
@@ -87,14 +87,12 @@ imageList.insertAdjacentHTML("beforeend", galleryFoo(images));
 
 imageList.addEventListener("click", (event) => {
   event.preventDefault();
-  const clickedImg = event.target.closest(".gallery-image");
-  if (!clickedImg) {
+  if (event.target.nodeName !== 'IMG') {
     return;
   }
+  const clickedImg = event.target;
   const originalImg = clickedImg.dataset.source;
 
-
-  
 const instance = basicLightbox.create(`
  <div class="modal">
  <img src="${originalImg}" />
